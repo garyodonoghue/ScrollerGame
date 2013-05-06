@@ -1,0 +1,12 @@
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\test.dll
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\test.pdb
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\test.dll
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\test.pdb
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\AppManifest.xaml
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\WMAppManifest.xml.g
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\WMAppManifest.xml
+bin\Windows Phone\Debug\
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\test.xap
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\XapCacheFile.xml
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\iron_man.xnb
