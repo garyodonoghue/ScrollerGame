@@ -64,7 +64,7 @@ namespace test
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            mSpriteTexture = this.Content.Load<Texture2D>("iron_man");
+            mSpriteTexture = this.Content.Load<Texture2D>("ironman");
 
             spritePosition1.X = 0;
             spritePosition1.Y = 0;
@@ -89,13 +89,58 @@ namespace test
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            // Allow the game to exit.
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back ==
+                ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            // Move the sprite around.
+            UpdateSprite(gameTime, ref spritePosition1, ref spriteSpeed1);
+            //CheckForCollision();
 
             base.Update(gameTime);
+        }
+
+        void UpdateSprite(GameTime gameTime, ref Vector2 spritePosition, ref Vector2 spriteSpeed)
+        {
+            // Move the sprite by speed, scaled by elapsed time.
+            spritePosition.X += 1;
+            spritePosition.Y += 1;
+
+                //spriteSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            int MaxX =
+                graphics.GraphicsDevice.Viewport.Width - mSpriteTexture.Width;
+            int MinX = 0;
+            int MaxY =
+                graphics.GraphicsDevice.Viewport.Height - mSpriteTexture.Height;
+            int MinY = 0;
+
+            // Check for bounce.
+            if (spritePosition.X > MaxX)
+            {
+                spriteSpeed.X *= -1;
+                spritePosition.X = MaxX;
+            }
+
+            else if (spritePosition.X < MinX)
+            {
+                spriteSpeed.X *= -1;
+                spritePosition.X = MinX;
+            }
+
+            if (spritePosition.Y > MaxY)
+            {
+                spriteSpeed.Y *= -1;
+                spritePosition.Y = MaxY;
+            }
+
+            else if (spritePosition.Y < MinY)
+            {
+                spriteSpeed.Y *= -1;
+                spritePosition.Y = MinY;
+            }
+
         }
 
         /// <summary>
@@ -108,7 +153,7 @@ namespace test
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(mSpriteTexture, mPosition, Color.White);
+            spriteBatch.Draw(mSpriteTexture, spritePosition1, Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
