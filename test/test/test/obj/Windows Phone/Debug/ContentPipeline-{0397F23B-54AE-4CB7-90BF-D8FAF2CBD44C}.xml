@@ -10,6 +10,51 @@
       <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\ironman.xnb</Output>
       <Time>2013-05-06T23:22:02.4493258+01:00</Time>
     </Item>
+    <Item>
+      <Source>Background01.png</Source>
+      <Name>Background01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background01.xnb</Output>
+      <Time>2013-05-07T21:29:30.5164665+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Background02.png</Source>
+      <Name>Background02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background02.xnb</Output>
+      <Time>2013-05-07T21:29:30.6054042+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Background03.png</Source>
+      <Name>Background03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background03.xnb</Output>
+      <Time>2013-05-07T21:29:30.6094135+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Background04.png</Source>
+      <Name>Background04</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background04.xnb</Output>
+      <Time>2013-05-07T21:29:30.6134145+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Background05.png</Source>
+      <Name>Background05</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background05.xnb</Output>
+      <Time>2013-05-07T21:29:30.6174151+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{0397F23B-54AE-4CB7-90BF-D8FAF2CBD44C}</ContentProjectGUID>
@@ -17,10 +62,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\testContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\testContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

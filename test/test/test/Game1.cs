@@ -19,14 +19,19 @@ namespace test
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        
-        Vector2 mPosition = new Vector2(0, 0);
-        Texture2D mSpriteTexture;
+
+        //Sprite object
+        Sprite mSprite;
 
         Vector2 spritePosition1;
         Vector2 spriteSpeed1 = new Vector2(50.0f, 50.0f);
-        int sprite1Height;
-        int sprite1Width;
+        Texture2D mSpriteTexture;
+
+        Sprite mBackgroundOne;
+        Sprite mBackgroundTwo;
+        Sprite mBackgroundThree;
+        Sprite mBackgroundFour;
+        Sprite mBackgroundFive;
 
         public Game1()
         {
@@ -49,7 +54,22 @@ namespace test
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            mSprite = new Sprite();
 
+            mBackgroundOne = new Sprite();
+            mBackgroundOne.Scale = 2.0f;
+
+            mBackgroundTwo = new Sprite();
+            mBackgroundTwo.Scale = 2.0f;
+
+            mBackgroundThree = new Sprite();
+            mBackgroundThree.Scale = 2.0f;
+
+            mBackgroundFour = new Sprite();
+            mBackgroundFour.Scale = 2.0f;
+
+            mBackgroundFive = new Sprite();
+            mBackgroundFive.Scale = 2.0f;
             base.Initialize();
         }
 
@@ -59,18 +79,30 @@ namespace test
         /// </summary>
         protected override void LoadContent()
         {
-            // TODO: use this.Content to load your game content here
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+ 
             // TODO: use this.Content to load your game content here
-            mSpriteTexture = this.Content.Load<Texture2D>("ironman");
-
+            mSpriteTexture = mSprite.LoadContent(this.Content, "ironman");
+       
             spritePosition1.X = 0;
-            spritePosition1.Y = 0;
+            spritePosition1.Y = 150;
 
-            sprite1Height = 10;// mSpriteTexture.Bounds.Height;
-            sprite1Width = 10;// mSpriteTexture.Bounds.Width;
+            mBackgroundOne.LoadContent(this.Content, "Background01");
+            mBackgroundOne.Position = new Vector2(0, 0);
+
+            mBackgroundTwo.LoadContent(this.Content, "Background02");
+            mBackgroundTwo.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 0);
+
+            mBackgroundThree.LoadContent(this.Content, "Background03");
+            mBackgroundThree.Position = new Vector2(mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width, 0);
+
+            mBackgroundFour.LoadContent(this.Content, "Background04");
+            mBackgroundFour.Position = new Vector2(mBackgroundThree.Position.X + mBackgroundThree.Size.Width, 0);
+
+            mBackgroundFive.LoadContent(this.Content, "Background05");
+            mBackgroundFive.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 0);
+ 
         }
 
         /// <summary>
@@ -98,16 +130,47 @@ namespace test
             UpdateSprite(gameTime, ref spritePosition1, ref spriteSpeed1);
             //CheckForCollision();
 
+            if (mBackgroundOne.Position.X < -mBackgroundOne.Size.Width)
+            {
+                mBackgroundOne.Position.X = mBackgroundFive.Position.X + mBackgroundFive.Size.Width;
+            }
+
+            if (mBackgroundTwo.Position.X < -mBackgroundTwo.Size.Width)
+            {
+                mBackgroundTwo.Position.X = mBackgroundOne.Position.X + mBackgroundOne.Size.Width;
+            }
+
+            if (mBackgroundThree.Position.X < -mBackgroundThree.Size.Width)
+            {
+                mBackgroundThree.Position.X = mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width;
+            }
+
+            if (mBackgroundFour.Position.X < -mBackgroundFour.Size.Width)
+            {
+                mBackgroundFour.Position.X = mBackgroundThree.Position.X + mBackgroundThree.Size.Width;
+            }
+
+            if (mBackgroundFive.Position.X < -mBackgroundFive.Size.Width)
+            {
+                mBackgroundFive.Position.X = mBackgroundFour.Position.X + mBackgroundFour.Size.Width;
+            }
+
+            Vector2 aDirection = new Vector2(-1, 0);
+            Vector2 aSpeed = new Vector2(160, 0);
+
+            mBackgroundOne.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            mBackgroundTwo.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            mBackgroundThree.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            mBackgroundFour.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            mBackgroundFive.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;            
+
             base.Update(gameTime);
         }
 
         void UpdateSprite(GameTime gameTime, ref Vector2 spritePosition, ref Vector2 spriteSpeed)
         {
             // Move the sprite by speed, scaled by elapsed time.
-            spritePosition.X += 1;
-            spritePosition.Y += 1;
-
-                //spriteSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            spritePosition.Y += 2;
 
             int MaxX =
                 graphics.GraphicsDevice.Viewport.Width - mSpriteTexture.Width;
@@ -153,7 +216,15 @@ namespace test
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+
+            mBackgroundOne.Draw(this.spriteBatch);
+            mBackgroundTwo.Draw(this.spriteBatch);
+            mBackgroundThree.Draw(this.spriteBatch);
+            mBackgroundFour.Draw(this.spriteBatch);
+            mBackgroundFive.Draw(this.spriteBatch);
+
             spriteBatch.Draw(mSpriteTexture, spritePosition1, Color.White);
+            
             spriteBatch.End();
 
             base.Draw(gameTime);
