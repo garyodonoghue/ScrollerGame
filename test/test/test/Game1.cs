@@ -139,6 +139,7 @@ namespace test
         protected override void Update(GameTime gameTime)
         {
             // Windows 8 Touch Gestures for MonoGame
+            float delta = 0F;
 
             while (TouchPanel.IsGestureAvailable)
             {
@@ -146,9 +147,10 @@ namespace test
 
                 if (gesture.GestureType == GestureType.FreeDrag)
                 {
-                    System.Diagnostics.Debug.WriteLine("Delta= "+gesture.Delta); 
+                    //System.Diagnostics.Debug.WriteLine("Delta= "+gesture.Delta.Y); 
                     //Console.WriteLine("Delta= "+gesture.Delta);
                     //UpdateSprite();
+                    delta = gesture.Delta.Y;
                 }
             }
 
@@ -158,7 +160,7 @@ namespace test
                 this.Exit();
 
             // Move the sprite around.
-            UpdateSprite(gameTime, ref spritePosition1, ref spriteSpeed1);
+            UpdateSprite(gameTime, ref spritePosition1, ref spriteSpeed1, delta);
             //CheckForCollision();
 
             if (mBackgroundOne.Position.X < -mBackgroundOne.Size.Width)
@@ -198,11 +200,10 @@ namespace test
             base.Update(gameTime);
         }
 
-        void UpdateSprite(GameTime gameTime, ref Vector2 spritePosition, ref Vector2 spriteSpeed)
+        void UpdateSprite(GameTime gameTime, ref Vector2 spritePosition, ref Vector2 spriteSpeed, float delta)
         {
-            // Move the sprite by speed, scaled by elapsed time.
-            spritePosition.Y += 2;
-
+            spritePosition.Y += delta;
+            
             int MaxX =
                 graphics.GraphicsDevice.Viewport.Width - mSpriteTexture.Width;
             int MinX = 0;
