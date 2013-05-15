@@ -10,6 +10,9 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Media;
 
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
+
 namespace test
 {
     /// <summary>
@@ -19,7 +22,7 @@ namespace test
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+     
         //Sprite object
         Sprite mSprite;
 
@@ -32,6 +35,17 @@ namespace test
         Sprite mBackgroundThree;
         Sprite mBackgroundFour;
         Sprite mBackgroundFive;
+
+        //Wont need all of these, possibly any?
+        // Keyboard states used to determine key 
+        KeyboardState currentKeyboardState;
+        KeyboardState previousKeyboardState;
+        // Gamepad states used to determine button 
+        GamePadState currentGamePadState;
+        GamePadState previousGamePadState;
+        //Mouse states used to track Mouse button 
+        MouseState currentMouseState;
+        MouseState previousMouseState;
 
         public Game1()
         {
@@ -53,6 +67,9 @@ namespace test
         /// </summary>
         protected override void Initialize()
         {
+            //Enable the FreeDrag gesture
+            TouchPanel.EnabledGestures = GestureType.FreeDrag;
+
             // TODO: Add your initialization logic here
             mSprite = new Sprite();
 
@@ -121,6 +138,20 @@ namespace test
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            // Windows 8 Touch Gestures for MonoGame
+
+            while (TouchPanel.IsGestureAvailable)
+            {
+                GestureSample gesture = TouchPanel.ReadGesture();
+
+                if (gesture.GestureType == GestureType.FreeDrag)
+                {
+                    System.Diagnostics.Debug.WriteLine("Delta= "+gesture.Delta); 
+                    //Console.WriteLine("Delta= "+gesture.Delta);
+                    //UpdateSprite();
+                }
+            }
+
             // Allow the game to exit.
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back ==
                 ButtonState.Pressed)
