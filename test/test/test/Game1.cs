@@ -10,9 +10,6 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Media;
 
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Input.Touch;
-
 namespace test
 {
     /// <summary>
@@ -35,17 +32,6 @@ namespace test
         Sprite mBackgroundThree;
         Sprite mBackgroundFour;
         Sprite mBackgroundFive;
-
-        //Wont need all of these, possibly any?
-        // Keyboard states used to determine key 
-        KeyboardState currentKeyboardState;
-        KeyboardState previousKeyboardState;
-        // Gamepad states used to determine button 
-        GamePadState currentGamePadState;
-        GamePadState previousGamePadState;
-        //Mouse states used to track Mouse button 
-        MouseState currentMouseState;
-        MouseState previousMouseState;
 
         public Game1()
         {
@@ -139,18 +125,18 @@ namespace test
         protected override void Update(GameTime gameTime)
         {
             // Windows 8 Touch Gestures for MonoGame
-            float delta = 0F;
-
+            float gravity = 5F;
+            
             while (TouchPanel.IsGestureAvailable)
             {
                 GestureSample gesture = TouchPanel.ReadGesture();
 
+                //The user briefly touched a single point on the screen, invert gravity so that the avatar flies upwards
                 if (gesture.GestureType == GestureType.FreeDrag)
                 {
-                    //System.Diagnostics.Debug.WriteLine("Delta= "+gesture.Delta.Y); 
-                    //Console.WriteLine("Delta= "+gesture.Delta);
-                    //UpdateSprite();
-                    delta = gesture.Delta.Y;
+                    //Console.WriteLine("Tapped!");
+                    //Console.ReadLine();
+                    gravity = gesture.Delta.Y;
                 }
             }
 
@@ -160,7 +146,7 @@ namespace test
                 this.Exit();
 
             // Move the sprite around.
-            UpdateSprite(gameTime, ref spritePosition1, ref spriteSpeed1, delta);
+            UpdateSprite(gameTime, ref spritePosition1, ref spriteSpeed1, gravity);
             //CheckForCollision();
 
             if (mBackgroundOne.Position.X < -mBackgroundOne.Size.Width)
@@ -188,7 +174,7 @@ namespace test
                 mBackgroundFive.Position.X = mBackgroundFour.Position.X + mBackgroundFour.Size.Width;
             }
 
-            Vector2 aDirection = new Vector2(-1, 0);
+            Vector2 aDirection = new Vector2(-3, 0);
             Vector2 aSpeed = new Vector2(160, 0);
 
             mBackgroundOne.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -200,9 +186,9 @@ namespace test
             base.Update(gameTime);
         }
 
-        void UpdateSprite(GameTime gameTime, ref Vector2 spritePosition, ref Vector2 spriteSpeed, float delta)
+        void UpdateSprite(GameTime gameTime, ref Vector2 spritePosition, ref Vector2 spriteSpeed, float gravity)
         {
-            spritePosition.Y += delta;
+            spritePosition.Y += gravity;
             
             int MaxX =
                 graphics.GraphicsDevice.Viewport.Width - mSpriteTexture.Width;
