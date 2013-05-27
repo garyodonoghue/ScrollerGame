@@ -210,8 +210,8 @@ namespace test
                 graphics.GraphicsDevice.Viewport.Height - mSpriteTexture.Height;
             int MinY = 0;
 
-            //Check if the sprite has hit the skyscraper
-            if (((spritePosition.X <= (mSkyscraper.Position.X) + 5) && (spritePosition.X >= (mSkyscraper.Position.X) - 5)) && spritePosition.Y <= mSkyscraper.Size.Height) 
+            //Check if the sprite has hit the skyscraper, allow a margin of error of 5, and hard-coded height 
+            if (((spritePosition.X <= (mSkyscraper.Position.X) + 5) && (spritePosition.X >= (mSkyscraper.Position.X) - 5)) && spritePosition.Y >= 50) 
             {
                 System.Diagnostics.Debug.WriteLine("Hit the skyscraper");
             }
