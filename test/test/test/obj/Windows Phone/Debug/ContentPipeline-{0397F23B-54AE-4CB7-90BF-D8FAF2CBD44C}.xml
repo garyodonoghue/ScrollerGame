@@ -55,6 +55,15 @@
       <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background05.xnb</Output>
       <Time>2013-05-07T21:29:30.6174151+01:00</Time>
     </Item>
+    <Item>
+      <Source>skyscraper.png</Source>
+      <Name>skyscraper</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\skyscraper.xnb</Output>
+      <Time>2013-05-27T17:14:02.1264973+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{0397F23B-54AE-4CB7-90BF-D8FAF2CBD44C}</ContentProjectGUID>

@@ -16,3 +16,4 @@ C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows P
 C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background03.xnb
 C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background04.xnb
 C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background05.xnb
+C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\skyscraper.xnb
