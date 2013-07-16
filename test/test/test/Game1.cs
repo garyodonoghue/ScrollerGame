@@ -17,14 +17,15 @@ namespace test
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        SpriteFont Font1;
+        SpriteFont Font2;
+        Vector2 FontPos;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
      
         //Sprite object
         Sprite mSprite;
-        
-        float gravity;
-        bool pressed;
 
         Vector2 spritePosition1;
         Vector2 spriteSpeed1 = new Vector2(50.0f, 50.0f);
@@ -37,7 +38,16 @@ namespace test
         Sprite mBackgroundFour;
         Sprite mBackgroundFive;
 
-        Sprite mSkyscraper;
+        Sprite obstacle1;
+        Sprite obstacle2;
+        Sprite obstacle3;
+        Sprite obstacle4;
+
+        bool paused = false;
+        
+        long score = 0L;
+
+        string gameOver = "Game Over!";
 
         public Game1()
         {
@@ -53,10 +63,6 @@ namespace test
 
         protected override void Initialize()
         {
-            // Windows 8 Touch Gestures for 
-            gravity = 0F;
-            pressed = false;
-
             //Enable the FreeDrag gesture
             TouchPanel.EnabledGestures = GestureType.FreeDrag;
             initSprites();
@@ -82,8 +88,17 @@ namespace test
             mBackgroundFive = new Sprite();
             mBackgroundFive.Scale = 2.0f;
 
-            mSkyscraper = new Sprite();
-            mSkyscraper.Scale = 2.0f;
+            obstacle1 = new Sprite();
+            obstacle1.Scale = 2.0f;
+
+            obstacle2 = new Sprite();
+            obstacle2.Scale = 2.0f;
+
+            obstacle3 = new Sprite();
+            obstacle3.Scale = 2.0f;
+
+            obstacle4 = new Sprite();
+            obstacle4.Scale = 2.0f;
 
             base.Initialize();
         }
@@ -95,6 +110,11 @@ namespace test
  
             spritePosition1.X = 0;
             spritePosition1.Y = 150;
+
+            Font1 = Content.Load<SpriteFont>("SpriteFont1");
+            Font2 = Content.Load<SpriteFont>("SpriteFont1");
+
+            FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width - 70, 15);
 
             loadSprites();
  
@@ -120,8 +140,17 @@ namespace test
             mBackgroundFive.LoadContent(this.Content, "Background05");
             mBackgroundFive.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 0);
 
-            mSkyscraper.LoadContent(this.Content, "skyscraper");
-            mSkyscraper.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 100);
+            obstacle1.LoadContent(this.Content, "obstacle");
+            obstacle1.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 100);
+
+            obstacle2.LoadContent(this.Content, "obstacle");
+            obstacle2.Position = new Vector2(mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width, 80);
+
+            obstacle3.LoadContent(this.Content, "obstacle");
+            obstacle3.Position = new Vector2(mBackgroundThree.Position.X + mBackgroundThree.Size.Width, 50);
+
+            obstacle4.LoadContent(this.Content, "obstacle");
+            obstacle4.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 200);
         }
 
         protected override void Update(GameTime gameTime)
@@ -161,8 +190,10 @@ namespace test
             
             checkCollision(ref spritePosition1, ref spriteSpeed1);
 
+            base.Draw(gameTime);
+
             resortBackgroundSprites();
-            adjustBackgroundSpritePositions(gameTime);           
+            adjustBackgroundSpritePositions(gameTime);
 
             base.Update(gameTime);
         }
@@ -177,7 +208,10 @@ namespace test
             mBackgroundThree.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             mBackgroundFour.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             mBackgroundFive.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            mSkyscraper.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            obstacle1.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            obstacle2.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            obstacle3.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            obstacle4.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         private void resortBackgroundSprites()
@@ -207,9 +241,24 @@ namespace test
                 mBackgroundFive.Position.X = mBackgroundFour.Position.X + mBackgroundFour.Size.Width;
             }
 
-            if (mSkyscraper.Position.X < -mBackgroundFour.Size.Width)
+            if (obstacle1.Position.X < -mBackgroundOne.Size.Width)
             {
-                mSkyscraper.Position.X = mBackgroundFour.Position.X + mSkyscraper.Size.Width;
+                obstacle1.Position.X = mBackgroundOne.Position.X + obstacle1.Size.Width;
+            }
+
+            if (obstacle2.Position.X < -mBackgroundTwo.Size.Width)
+            {
+                obstacle2.Position.X = mBackgroundTwo.Position.X + obstacle1.Size.Width;
+            }
+
+            if (obstacle3.Position.X < -mBackgroundThree.Size.Width)
+            {
+                obstacle3.Position.X = mBackgroundThree.Position.X + obstacle1.Size.Width;
+            }
+
+            if (obstacle4.Position.X < -mBackgroundFour.Size.Width)
+            {
+                obstacle4.Position.X = mBackgroundFour.Position.X + obstacle1.Size.Width;
             }
         }
 
@@ -232,9 +281,21 @@ namespace test
             int MinY = 0;
 
             //Check if the sprite has hit the skyscraper, allow a margin of error of 5, and hard-coded height 
-            if (((spritePosition.X <= (mSkyscraper.Position.X) + 5) && (spritePosition.X >= (mSkyscraper.Position.X) - 5)) && spritePosition.Y >= 50)
+            if (((spritePosition.X + 100 >= obstacle1.Position.X - 100) && (spritePosition.X <= obstacle1.Position.X - 95)) && (spritePosition.Y >= obstacle1.Position.Y-30) && (spritePosition.Y <= obstacle1.Position.Y + 65))
             {
-                System.Diagnostics.Debug.WriteLine("Hit the skyscraper");
+                paused = true;
+            }
+            if (((spritePosition.X + 100 >= obstacle2.Position.X - 100) && (spritePosition.X <= obstacle2.Position.X - 95)) && (spritePosition.Y >= obstacle2.Position.Y - 30) && (spritePosition.Y <= obstacle2.Position.Y + 65))
+            {
+                paused = true;
+            }
+            if (((spritePosition.X + 100 >= obstacle3.Position.X - 100) && (spritePosition.X <= obstacle3.Position.X - 95)) && (spritePosition.Y >= obstacle3.Position.Y - 30) && (spritePosition.Y <= obstacle3.Position.Y + 65))
+            {
+                paused = true;
+            }
+            if (((spritePosition.X + 100 >= obstacle4.Position.X - 100) && (spritePosition.X <= obstacle4.Position.X - 95)) && (spritePosition.Y >= obstacle4.Position.Y - 30) && (spritePosition.Y <= obstacle4.Position.Y + 65))
+            {
+                paused = true;
             }
 
             // Check for bounce.
@@ -270,19 +331,45 @@ namespace test
         protected override void Draw(GameTime gameTime)
         {
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+            string output;
 
-            // TODO: Add your drawing code here
+            // Update ticks (score) if the user hasn't hit an obstacle, otherwise just use the old value for score 
             spriteBatch.Begin();
-
+            if (!paused)
+            {
+               score = gameTime.TotalGameTime.Ticks / 100000;
+               output = "Score: " + score;
+            }
+            else {
+                output = "Score: " + score;
+            }
+            // Find the center of the string
+            Vector2 FontOrigin = Font1.MeasureString(output) / 2;
+            
+            Vector2 fontOrign = Font2.MeasureString(gameOver) / 2;
+            Vector2 gameOverPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
+            
             mBackgroundOne.Draw(this.spriteBatch);
             mBackgroundTwo.Draw(this.spriteBatch);
             mBackgroundThree.Draw(this.spriteBatch);
             mBackgroundFour.Draw(this.spriteBatch);
             mBackgroundFive.Draw(this.spriteBatch);
-            mSkyscraper.Draw(this.spriteBatch);
+            obstacle1.Draw(this.spriteBatch);
+            obstacle2.Draw(this.spriteBatch);
+            obstacle3.Draw(this.spriteBatch);
+            obstacle4.Draw(this.spriteBatch);
 
             spriteBatch.Draw(mSpriteTexture, spritePosition1, Color.White);
-            
+
+            spriteBatch.DrawString(Font1, output, FontPos, Color.LightGreen,
+                0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+
+            if (paused)
+            {
+                spriteBatch.DrawString(Font2, gameOver+"\n"+output, gameOverPos, Color.Red,
+                    0, fontOrign, 1.0f, SpriteEffects.None, 0.5f);
+            }
+
             spriteBatch.End();
 
             base.Draw(gameTime);

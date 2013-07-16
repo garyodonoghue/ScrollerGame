@@ -16,4 +16,11 @@ C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows P
 C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background03.xnb
 C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background04.xnb
 C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background05.xnb
-C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\skyscraper.xnb
+C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\SpriteFont1.xnb
+C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\obstacle.xnb
+C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\test.xap
+C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\XapCacheFile.xml
+C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\AppManifest.xaml
+C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\WMAppManifest.xml.g
+C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\WMAppManifest.xml
+bin\Windows Phone\Debug\
