@@ -56,13 +56,22 @@
       <Time>2013-05-07T21:29:30.6174151+01:00</Time>
     </Item>
     <Item>
-      <Source>skyscraper.png</Source>
-      <Name>skyscraper</Name>
+      <Source>SpriteFont1.spritefont</Source>
+      <Name>SpriteFont1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\SpriteFont1.xnb</Output>
+      <Time>2013-06-17T21:54:29.4658307+01:00</Time>
+    </Item>
+    <Item>
+      <Source>obstacle.png</Source>
+      <Name>obstacle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\skyscraper.xnb</Output>
-      <Time>2013-05-27T17:14:02.1264973+01:00</Time>
+      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\obstacle.xnb</Output>
+      <Time>2013-06-22T19:28:49.1771756+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
