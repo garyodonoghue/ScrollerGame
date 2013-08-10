@@ -17,6 +17,18 @@ namespace test
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        enum GameState { 
+            MainMenu, 
+            Options, 
+            Playing,
+        }
+
+        GameState CurrentGameState = GameState.MainMenu;
+
+        int screenWidth = 800, screenHeight = 600;
+
+        cButton btnPlay;
+
         SpriteFont Font1;
         SpriteFont Font2;
         Vector2 FontPos;
@@ -115,9 +127,14 @@ namespace test
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
- 
+
+
             spritePosition1.X = 0;
             spritePosition1.Y = 150;
+
+
+            graphics.PreferredBackBufferHeight = screenHeight;
+            graphics.PreferredBackBufferWidth = screenWidth;
 
             Font1 = Content.Load<SpriteFont>("SpriteFont1");
             Font2 = Content.Load<SpriteFont>("SpriteFont1");
@@ -125,6 +142,13 @@ namespace test
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width - 70, 15);
 
             loadSprites();
+
+
+            btnPlay = new cButton(Content.Load<Texture2D>("ironman"), graphics.GraphicsDevice);
+            btnPlay.setPosition(new Vector2(350, 300));
+
+            graphics.ApplyChanges();
+            IsMouseVisible = true;
  
         }
 
@@ -171,6 +195,17 @@ namespace test
         {
             checkBackButton();
 
+            MouseState mouse = Mouse.GetState();
+
+            switch (CurrentGameState) { 
+                case GameState.MainMenu:
+                    if (btnPlay.isClicked == true) CurrentGameState = GameState.Playing;
+                    btnPlay.Update(mouse);
+                    break;
+
+                case GameState.Playing:
+                    break;
+            }
             if (TouchPanel.IsGestureAvailable)
             {
                 GestureSample gesture = TouchPanel.ReadGesture();
@@ -364,46 +399,60 @@ namespace test
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
             string output;
 
             // Update ticks (score) if the user hasn't hit an obstacle, otherwise just use the old value for score 
             spriteBatch.Begin();
-            if (!paused)
+
+            switch (CurrentGameState)
             {
-               score = gameTime.TotalGameTime.Ticks / 100000;
-               output = "Score: " + score;
-            }
-            else {
-                output = "Score: " + score;
-            }
-            // Find the center of the string
-            Vector2 FontOrigin = Font1.MeasureString(output) / 2;
-            
-            Vector2 fontOrign = Font2.MeasureString(gameOver) / 2;
-            Vector2 gameOverPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
-            
-            mBackgroundOne.Draw(this.spriteBatch);
-            mBackgroundTwo.Draw(this.spriteBatch);
-            mBackgroundThree.Draw(this.spriteBatch);
-            mBackgroundFour.Draw(this.spriteBatch);
-            mBackgroundFive.Draw(this.spriteBatch);
-            obstacle1.Draw(this.spriteBatch);
-            obstacle1a.Draw(this.spriteBatch);
-            obstacle2.Draw(this.spriteBatch);
-            obstacle2a.Draw(this.spriteBatch);
-            obstacle3.Draw(this.spriteBatch);
-            obstacle4.Draw(this.spriteBatch);
+                case GameState.MainMenu:
+                    spriteBatch.Draw(Content.Load<Texture2D>("ironman"), new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
+                    //spriteBatch.Draw(Content.Load<Texture2D>("MainMenu"), new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
+                    btnPlay.Draw(spriteBatch);
+                    break;
+                case GameState.Playing:
 
-            spriteBatch.Draw(mSpriteTexture, spritePosition1, Color.White);
+                    if (!paused)
+                    {
+                        score = gameTime.TotalGameTime.Ticks / 100000;
+                        output = "Score: " + score;
+                    }
+                    else
+                    {
+                        output = "Score: " + score;
+                    }
+                    // Find the center of the string
+                    Vector2 FontOrigin = Font1.MeasureString(output) / 2;
 
-            spriteBatch.DrawString(Font1, output, FontPos, Color.LightGreen,
-                0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+                    Vector2 fontOrign = Font2.MeasureString(gameOver) / 2;
+                    Vector2 gameOverPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
 
-            if (paused)
-            {
-                spriteBatch.DrawString(Font2, gameOver+"\n"+output, gameOverPos, Color.Red,
-                    0, fontOrign, 1.0f, SpriteEffects.None, 0.5f);
+                    mBackgroundOne.Draw(this.spriteBatch);
+                    mBackgroundTwo.Draw(this.spriteBatch);
+                    mBackgroundThree.Draw(this.spriteBatch);
+                    mBackgroundFour.Draw(this.spriteBatch);
+                    mBackgroundFive.Draw(this.spriteBatch);
+                    obstacle1.Draw(this.spriteBatch);
+                    obstacle1a.Draw(this.spriteBatch);
+                    obstacle2.Draw(this.spriteBatch);
+                    obstacle2a.Draw(this.spriteBatch);
+                    obstacle3.Draw(this.spriteBatch);
+                    obstacle4.Draw(this.spriteBatch);
+
+                    spriteBatch.Draw(mSpriteTexture, spritePosition1, Color.White);
+
+                    spriteBatch.DrawString(Font1, output, FontPos, Color.LightGreen,
+                        0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+
+                    if (paused)
+                    {
+                        spriteBatch.DrawString(Font2, gameOver + "\n" + output, gameOverPos, Color.Red,
+                            0, fontOrign, 1.0f, SpriteEffects.None, 0.5f);
+                    }
+                    break;
             }
 
             spriteBatch.End();
