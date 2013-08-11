@@ -17,6 +17,18 @@ namespace test
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        enum GameState { 
+            MainMenu, 
+            Options, 
+            Playing,
+        }
+
+        GameState CurrentGameState = GameState.MainMenu;
+
+        int screenWidth = 800, screenHeight = 600;
+
+        cButton btnPlay;
+
         SpriteFont Font1;
         SpriteFont Font2;
         Vector2 FontPos;
@@ -39,7 +51,9 @@ namespace test
         Sprite mBackgroundFive;
 
         Sprite obstacle1;
+        Sprite obstacle1a;
         Sprite obstacle2;
+        Sprite obstacle2a;
         Sprite obstacle3;
         Sprite obstacle4;
 
@@ -91,8 +105,14 @@ namespace test
             obstacle1 = new Sprite();
             obstacle1.Scale = 2.0f;
 
+            obstacle1a = new Sprite();
+            obstacle1a.Scale = 2.0f;
+
             obstacle2 = new Sprite();
             obstacle2.Scale = 2.0f;
+
+            obstacle2a = new Sprite();
+            obstacle2a.Scale = 2.0f;
 
             obstacle3 = new Sprite();
             obstacle3.Scale = 2.0f;
@@ -107,9 +127,14 @@ namespace test
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
- 
+
+
             spritePosition1.X = 0;
             spritePosition1.Y = 150;
+
+
+            graphics.PreferredBackBufferHeight = screenHeight;
+            graphics.PreferredBackBufferWidth = screenWidth;
 
             Font1 = Content.Load<SpriteFont>("SpriteFont1");
             Font2 = Content.Load<SpriteFont>("SpriteFont1");
@@ -117,6 +142,13 @@ namespace test
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width - 70, 15);
 
             loadSprites();
+
+            // TODO: add button for 'new game'
+            btnPlay = new cButton(Content.Load<Texture2D>("ironman"), graphics.GraphicsDevice);
+            btnPlay.setPosition(new Vector2(350, 300));
+
+            graphics.ApplyChanges();
+            IsMouseVisible = true;
  
         }
 
@@ -141,22 +173,39 @@ namespace test
             mBackgroundFive.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 0);
 
             obstacle1.LoadContent(this.Content, "obstacle");
-            obstacle1.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 100);
+            obstacle1.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 120);
+
+            obstacle1a.LoadContent(this.Content, "obstacle");
+            obstacle1a.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 20);
 
             obstacle2.LoadContent(this.Content, "obstacle");
             obstacle2.Position = new Vector2(mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width, 80);
+
+            obstacle2a.LoadContent(this.Content, "obstacle");
+            obstacle2a.Position = new Vector2(mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width, 250);
 
             obstacle3.LoadContent(this.Content, "obstacle");
             obstacle3.Position = new Vector2(mBackgroundThree.Position.X + mBackgroundThree.Size.Width, 50);
 
             obstacle4.LoadContent(this.Content, "obstacle");
-            obstacle4.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 200);
+            obstacle4.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 250);
         }
 
         protected override void Update(GameTime gameTime)
         {
             checkBackButton();
 
+            MouseState mouse = Mouse.GetState();
+
+            switch (CurrentGameState) { 
+                case GameState.MainMenu:
+                    if (btnPlay.isClicked == true) CurrentGameState = GameState.Playing;
+                    btnPlay.Update(mouse);
+                    break;
+
+                case GameState.Playing:
+                    break;
+            }
             if (TouchPanel.IsGestureAvailable)
             {
                 GestureSample gesture = TouchPanel.ReadGesture();
@@ -209,7 +258,9 @@ namespace test
             mBackgroundFour.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             mBackgroundFive.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             obstacle1.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            obstacle1a.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             obstacle2.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            obstacle2a.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             obstacle3.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             obstacle4.Position += aDirection * aSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
@@ -246,19 +297,29 @@ namespace test
                 obstacle1.Position.X = mBackgroundOne.Position.X + obstacle1.Size.Width;
             }
 
+            if (obstacle1a.Position.X < -mBackgroundOne.Size.Width)
+            {
+                obstacle1a.Position.X = mBackgroundOne.Position.X + obstacle1a.Size.Width;
+            }
+
             if (obstacle2.Position.X < -mBackgroundTwo.Size.Width)
             {
-                obstacle2.Position.X = mBackgroundTwo.Position.X + obstacle1.Size.Width;
+                obstacle2.Position.X = mBackgroundTwo.Position.X + obstacle2.Size.Width;
+            }
+
+            if (obstacle2a.Position.X < -mBackgroundTwo.Size.Width)
+            {
+                obstacle2a.Position.X = mBackgroundTwo.Position.X + obstacle2a.Size.Width;
             }
 
             if (obstacle3.Position.X < -mBackgroundThree.Size.Width)
             {
-                obstacle3.Position.X = mBackgroundThree.Position.X + obstacle1.Size.Width;
+                obstacle3.Position.X = mBackgroundThree.Position.X + obstacle3.Size.Width;
             }
 
             if (obstacle4.Position.X < -mBackgroundFour.Size.Width)
             {
-                obstacle4.Position.X = mBackgroundFour.Position.X + obstacle1.Size.Width;
+                obstacle4.Position.X = mBackgroundFour.Position.X + obstacle4.Size.Width;
             }
         }
 
@@ -285,7 +346,15 @@ namespace test
             {
                 paused = true;
             }
+            if (((spritePosition.X + 100 >= obstacle1a.Position.X - 100) && (spritePosition.X <= obstacle1a.Position.X - 95)) && (spritePosition.Y >= obstacle1a.Position.Y - 30) && (spritePosition.Y <= obstacle1a.Position.Y + 65))
+            {
+                paused = true;
+            }
             if (((spritePosition.X + 100 >= obstacle2.Position.X - 100) && (spritePosition.X <= obstacle2.Position.X - 95)) && (spritePosition.Y >= obstacle2.Position.Y - 30) && (spritePosition.Y <= obstacle2.Position.Y + 65))
+            {
+                paused = true;
+            }
+            if (((spritePosition.X + 100 >= obstacle2a.Position.X - 100) && (spritePosition.X <= obstacle2a.Position.X - 95)) && (spritePosition.Y >= obstacle2a.Position.Y - 30) && (spritePosition.Y <= obstacle2a.Position.Y + 65))
             {
                 paused = true;
             }
@@ -330,44 +399,61 @@ namespace test
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
             string output;
 
             // Update ticks (score) if the user hasn't hit an obstacle, otherwise just use the old value for score 
             spriteBatch.Begin();
-            if (!paused)
+
+            switch (CurrentGameState)
             {
-               score = gameTime.TotalGameTime.Ticks / 100000;
-               output = "Score: " + score;
-            }
-            else {
-                output = "Score: " + score;
-            }
-            // Find the center of the string
-            Vector2 FontOrigin = Font1.MeasureString(output) / 2;
-            
-            Vector2 fontOrign = Font2.MeasureString(gameOver) / 2;
-            Vector2 gameOverPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
-            
-            mBackgroundOne.Draw(this.spriteBatch);
-            mBackgroundTwo.Draw(this.spriteBatch);
-            mBackgroundThree.Draw(this.spriteBatch);
-            mBackgroundFour.Draw(this.spriteBatch);
-            mBackgroundFive.Draw(this.spriteBatch);
-            obstacle1.Draw(this.spriteBatch);
-            obstacle2.Draw(this.spriteBatch);
-            obstacle3.Draw(this.spriteBatch);
-            obstacle4.Draw(this.spriteBatch);
+                case GameState.MainMenu:
+                    //TODO: Add menu which takes up the full screen - could be blank page - the 'new game' button will be drawn on top of this
+                    spriteBatch.Draw(Content.Load<Texture2D>("ironman"), new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
+                    //spriteBatch.Draw(Content.Load<Texture2D>("MainMenu"), new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
+                    btnPlay.Draw(spriteBatch);
+                    break;
+                case GameState.Playing:
 
-            spriteBatch.Draw(mSpriteTexture, spritePosition1, Color.White);
+                    if (!paused)
+                    {
+                        score = gameTime.TotalGameTime.Ticks / 100000;
+                        output = "Score: " + score;
+                    }
+                    else
+                    {
+                        output = "Score: " + score;
+                    }
+                    // Find the center of the string
+                    Vector2 FontOrigin = Font1.MeasureString(output) / 2;
 
-            spriteBatch.DrawString(Font1, output, FontPos, Color.LightGreen,
-                0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+                    Vector2 fontOrign = Font2.MeasureString(gameOver) / 2;
+                    Vector2 gameOverPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
 
-            if (paused)
-            {
-                spriteBatch.DrawString(Font2, gameOver+"\n"+output, gameOverPos, Color.Red,
-                    0, fontOrign, 1.0f, SpriteEffects.None, 0.5f);
+                    mBackgroundOne.Draw(this.spriteBatch);
+                    mBackgroundTwo.Draw(this.spriteBatch);
+                    mBackgroundThree.Draw(this.spriteBatch);
+                    mBackgroundFour.Draw(this.spriteBatch);
+                    mBackgroundFive.Draw(this.spriteBatch);
+                    obstacle1.Draw(this.spriteBatch);
+                    obstacle1a.Draw(this.spriteBatch);
+                    obstacle2.Draw(this.spriteBatch);
+                    obstacle2a.Draw(this.spriteBatch);
+                    obstacle3.Draw(this.spriteBatch);
+                    obstacle4.Draw(this.spriteBatch);
+
+                    spriteBatch.Draw(mSpriteTexture, spritePosition1, Color.White);
+
+                    spriteBatch.DrawString(Font1, output, FontPos, Color.LightGreen,
+                        0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+
+                    if (paused)
+                    {
+                        spriteBatch.DrawString(Font2, gameOver + "\n" + output, gameOverPos, Color.Red,
+                            0, fontOrign, 1.0f, SpriteEffects.None, 0.5f);
+                    }
+                    break;
             }
 
             spriteBatch.End();
