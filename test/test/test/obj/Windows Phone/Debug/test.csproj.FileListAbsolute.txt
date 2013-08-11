@@ -18,9 +18,28 @@ C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows P
 C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background05.xnb
 C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\SpriteFont1.xnb
 C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\obstacle.xnb
-C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\test.xap
-C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\XapCacheFile.xml
-C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\AppManifest.xaml
-C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\WMAppManifest.xml.g
-C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\WMAppManifest.xml
-bin\Windows Phone\Debug\
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\Content\ironman.xnb
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\Content\Background01.xnb
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\Content\Background02.xnb
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\Content\Background03.xnb
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\Content\Background04.xnb
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\Content\Background05.xnb
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\Content\obstacle.xnb
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\Content\SpriteFont1.xnb
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\test.dll
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\test.pdb
+C:\dev\git\windows8game\windows8game\test\test\test\obj\Windows Phone\Debug\test.csprojResolveAssemblyReference.cache
+C:\dev\git\windows8game\windows8game\test\test\test\obj\Windows Phone\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\dev\git\windows8game\windows8game\test\test\test\obj\Windows Phone\Debug\test.dll
+C:\dev\git\windows8game\windows8game\test\test\test\obj\Windows Phone\Debug\test.pdb
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\AppManifest.xaml
+C:\dev\git\windows8game\windows8game\test\test\test\obj\Windows Phone\Debug\WMAppManifest.xml.g
+C:\dev\git\windows8game\windows8game\test\test\test\obj\Windows Phone\Debug\WMAppManifest.xml
+C:\dev\git\windows8game\windows8game\test\test\test\bin\Windows Phone\Debug\test.xap
+C:\dev\git\windows8game\windows8game\test\test\test\obj\Windows Phone\Debug\XapCacheFile.xml
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\bckgnd1.xnb
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\bckgnd2.xnb
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\bckgnd3.xnb
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\bckgnd4.xnb
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\menuBckgrnd.xnb
+C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\newGameBtn.xnb

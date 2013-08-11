@@ -16,7 +16,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background01.xnb</Output>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background01.xnb</Output>
       <Time>2013-05-07T21:29:30.5164665+01:00</Time>
     </Item>
     <Item>
@@ -25,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background02.xnb</Output>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background02.xnb</Output>
       <Time>2013-05-07T21:29:30.6054042+01:00</Time>
     </Item>
     <Item>
@@ -34,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background03.xnb</Output>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background03.xnb</Output>
       <Time>2013-05-07T21:29:30.6094135+01:00</Time>
     </Item>
     <Item>
@@ -43,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background04.xnb</Output>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background04.xnb</Output>
       <Time>2013-05-07T21:29:30.6134145+01:00</Time>
     </Item>
     <Item>
@@ -52,17 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background05.xnb</Output>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\Background05.xnb</Output>
       <Time>2013-05-07T21:29:30.6174151+01:00</Time>
-    </Item>
-    <Item>
-      <Source>SpriteFont1.spritefont</Source>
-      <Name>SpriteFont1</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\SpriteFont1.xnb</Output>
-      <Time>2013-06-17T21:54:29.4658307+01:00</Time>
     </Item>
     <Item>
       <Source>obstacle.png</Source>
@@ -70,8 +61,71 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\obstacle.xnb</Output>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\obstacle.xnb</Output>
       <Time>2013-06-22T19:28:49.1771756+01:00</Time>
+    </Item>
+    <Item>
+      <Source>bckgnd1.jpg</Source>
+      <Name>bckgnd1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\bckgnd1.xnb</Output>
+      <Time>2013-08-11T18:06:21.085584+01:00</Time>
+    </Item>
+    <Item>
+      <Source>bckgnd2.jpg</Source>
+      <Name>bckgnd2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\bckgnd2.xnb</Output>
+      <Time>2013-08-11T18:06:21.0885831+01:00</Time>
+    </Item>
+    <Item>
+      <Source>bckgnd3.jpg</Source>
+      <Name>bckgnd3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\bckgnd3.xnb</Output>
+      <Time>2013-08-11T18:06:21.0925852+01:00</Time>
+    </Item>
+    <Item>
+      <Source>bckgnd4.jpg</Source>
+      <Name>bckgnd4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\bckgnd4.xnb</Output>
+      <Time>2013-08-11T18:06:21.0955848+01:00</Time>
+    </Item>
+    <Item>
+      <Source>menuBckgrnd.jpg</Source>
+      <Name>menuBckgrnd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\menuBckgrnd.xnb</Output>
+      <Time>2013-08-11T18:06:21.0995859+01:00</Time>
+    </Item>
+    <Item>
+      <Source>newGameBtn.png</Source>
+      <Name>newGameBtn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\newGameBtn.xnb</Output>
+      <Time>2013-08-11T18:06:21.1038954+01:00</Time>
+    </Item>
+    <Item>
+      <Source>SpriteFont1.spritefont</Source>
+      <Name>SpriteFont1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\SpriteFont1.xnb</Output>
+      <Time>2013-06-17T21:54:29.4658307+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -80,10 +134,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\testContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Gary\documents\visual studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\testContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\obj\Windows Phone\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Gary\Documents\Visual Studio 2012\Projects\test\test\test\bin\Windows Phone\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

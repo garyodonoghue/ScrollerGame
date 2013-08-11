@@ -1,1 +1,2 @@
 C:\Users\Gary\documents\visual studio 2012\Projects\test\test\testContent\obj\Windows Phone\Debug\testContent.contentprojResolveAssemblyReference.cache
+C:\dev\git\windows8game\windows8game\test\test\testContent\obj\Windows Phone\Debug\testContent.contentprojResolveAssemblyReference.cache

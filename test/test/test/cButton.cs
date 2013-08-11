@@ -21,7 +21,7 @@ namespace test
         public cButton(Texture2D newTexture, GraphicsDevice graphics) {
             texture = newTexture;
 
-            size = new Vector2(graphics.Viewport.Width / 8, graphics.Viewport.Height / 30); 
+            size = new Vector2(graphics.Viewport.Width / 8, graphics.Viewport.Height / 5); 
         }
 
         bool down;

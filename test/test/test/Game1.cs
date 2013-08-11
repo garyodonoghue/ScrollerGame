@@ -144,8 +144,8 @@ namespace test
             loadSprites();
 
             // TODO: add button for 'new game'
-            btnPlay = new cButton(Content.Load<Texture2D>("ironman"), graphics.GraphicsDevice);
-            btnPlay.setPosition(new Vector2(350, 300));
+            btnPlay = new cButton(Content.Load<Texture2D>("newGameBtn"), graphics.GraphicsDevice);
+            btnPlay.setPosition(new Vector2(350, 150));
 
             graphics.ApplyChanges();
             IsMouseVisible = true;
@@ -157,19 +157,19 @@ namespace test
             // TODO: use this.Content to load your game content here
             mSpriteTexture = mSprite.LoadContent(this.Content, "ironman");
 
-            mBackgroundOne.LoadContent(this.Content, "Background01");
+            mBackgroundOne.LoadContent(this.Content, "bckgnd1");
             mBackgroundOne.Position = new Vector2(0, 0);
 
-            mBackgroundTwo.LoadContent(this.Content, "Background02");
+            mBackgroundTwo.LoadContent(this.Content, "bckgnd2");
             mBackgroundTwo.Position = new Vector2(mBackgroundOne.Position.X + mBackgroundOne.Size.Width, 0);
 
-            mBackgroundThree.LoadContent(this.Content, "Background03");
+            mBackgroundThree.LoadContent(this.Content, "bckgnd3");
             mBackgroundThree.Position = new Vector2(mBackgroundTwo.Position.X + mBackgroundTwo.Size.Width, 0);
 
-            mBackgroundFour.LoadContent(this.Content, "Background04");
+            mBackgroundFour.LoadContent(this.Content, "bckgnd4");
             mBackgroundFour.Position = new Vector2(mBackgroundThree.Position.X + mBackgroundThree.Size.Width, 0);
 
-            mBackgroundFive.LoadContent(this.Content, "Background05");
+            mBackgroundFive.LoadContent(this.Content, "bckgnd1");
             mBackgroundFive.Position = new Vector2(mBackgroundFour.Position.X + mBackgroundFour.Size.Width, 0);
 
             obstacle1.LoadContent(this.Content, "obstacle");
@@ -410,7 +410,7 @@ namespace test
             {
                 case GameState.MainMenu:
                     //TODO: Add menu which takes up the full screen - could be blank page - the 'new game' button will be drawn on top of this
-                    spriteBatch.Draw(Content.Load<Texture2D>("ironman"), new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
+                    spriteBatch.Draw(Content.Load<Texture2D>("menuBckgrnd"), new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
                     //spriteBatch.Draw(Content.Load<Texture2D>("MainMenu"), new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
                     btnPlay.Draw(spriteBatch);
                     break;

@@ -4,5 +4,11 @@ Content\Background02.xnb
 Content\Background03.xnb
 Content\Background04.xnb
 Content\Background05.xnb
-Content\SpriteFont1.xnb
 Content\obstacle.xnb
+Content\bckgnd1.xnb
+Content\bckgnd2.xnb
+Content\bckgnd3.xnb
+Content\bckgnd4.xnb
+Content\menuBckgrnd.xnb
+Content\newGameBtn.xnb
+Content\SpriteFont1.xnb
